@@ -1,0 +1,29 @@
+#!/bin/bash
+
+intelBacklightPath=/sys/class/backlight/intel_backlight
+
+maxBrightness=$(<$intelBacklightPath/max_brightness)
+diff=$(echo "$maxBrightness * 0.1 / 1" | bc)
+
+if [ "$1" = "+" ]
+then
+	scale=1
+else
+	scale=-1
+fi
+
+brightness=$(<$intelBacklightPath/brightness)
+let "brightness = brightness + scale * diff"
+
+if [ "$brightness" -le "$diff" ]
+then
+	brightness="$diff"
+fi
+if [ "$brightness" -gt "$maxBrightness" ]
+then
+	brightness="$maxBrightness"
+fi
+
+## echo $brightness
+echo $brightness > $intelBacklightPath/brightness
+
