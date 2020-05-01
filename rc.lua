@@ -48,7 +48,7 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "gnome-terminal"
+terminal = "terminator"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -331,13 +331,13 @@ globalkeys = gears.table.join(
     awful.key({}, "XF86AudioMute", function () os.execute("amixer set Master toggle") end),
     awful.key({}, "XF86AudioLowerVolume", function () os.execute("amixer set Master 5%-") end),
     awful.key({}, "XF86AudioRaiseVolume", function () os.execute("amixer set Master 5%+") end),
-    -- awful.key({}, "XF86AudioMicMute", function () os.execute("amixer set Mic toggle") end),
+    awful.key({}, "XF86AudioMicMute", function () os.execute("amixer set Mic toggle") end),
 
     -- Brightness   
     -- awful.key({}, "XF86MonBrightnessDown", function () os.execute("xbacklight -dec 10") end),
     -- awful.key({}, "XF86MonBrightnessUp", function () os.execute("xbacklight -inc 10") end),
-    awful.key({}, "XF86MonBrightnessDown", function () os.execute("~/.backlight -") end),
-    awful.key({}, "XF86MonBrightnessUp", function () os.execute("~/.backlight +") end),
+    awful.key({}, "XF86MonBrightnessDown", function () os.execute("backlight -") end),
+    awful.key({}, "XF86MonBrightnessUp", function () os.execute("backlight +") end),
 
     -- Screen shot
     awful.key({ modkey }, "p", function () os.execute("scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/images/shots/' -s") end),

@@ -53,7 +53,7 @@ export LANG=zh_TW.UTF-8
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=ibus
 export QT_IM_MODULE=ibus
-ibus-daemon -drx
+ibus-daemon -drx &
 
 cbatticon -c "sudo poweroff" &
 
