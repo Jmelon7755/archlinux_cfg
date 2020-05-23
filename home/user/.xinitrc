@@ -48,6 +48,10 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+xrandr --dpi 96
+
 export LANG=zh_TW.UTF-8
 
 export GTK_IM_MODULE=ibus
